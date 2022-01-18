@@ -1,0 +1,29 @@
+.container {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.drivers-list {
+  overflow: auto;
+}
+
+.info-icon {
+  color: gray;
+  font-size: 17px;
+}
+
+.panel-title {
+    width: 110px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.expansion-panel-small {
+  font-size: 10px;
+}
+
+.expansion-panel-medium {
+  font-size: 13px;
+}

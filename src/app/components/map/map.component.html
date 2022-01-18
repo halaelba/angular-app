@@ -1,0 +1,24 @@
+        <agm-map class="map" [zoom]="selectedCar ? 10 : 3"
+            [latitude]="selectedCar ? selectedCar.location.lat : 50"
+            [longitude]="selectedCar ? selectedCar.location.lng : 50">
+
+        <agm-marker
+          *ngIf="selectedCar"
+          [latitude]="selectedCar.location.lat"
+          [longitude]="selectedCar.location.lng">
+          <agm-snazzy-info-window [isOpen]="true" [showCloseButton]="false"
+            [maxWidth]="200" [fontSize]="'10px'" [padding]="'7px'">
+            <ng-template>
+              <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+                  <img *ngIf="selectedDriver" class="driver-img" [src]="selectedDriver.image" width="50" height="50"
+                  alt="{{selectedCar.driver.name}} picture">
+                <div class="driver-info">
+                  <strong>{{selectedCar.driver.name}}</strong> <br>
+                  {{selectedCar.carMake}} Car <br>
+                  <strong>{{selectedCar.kmDriven}}</strong> km
+                </div>
+            </div>
+            </ng-template>
+          </agm-snazzy-info-window>
+        </agm-marker>
+      </agm-map>

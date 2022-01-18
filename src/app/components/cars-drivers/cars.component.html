@@ -1,0 +1,34 @@
+
+<div class="cars-component">
+  <div class="container" fxLayout="row" >
+      <mat-accordion class="drivers-list" fxFlex="17%" fxFlex.lt-md="30%" fxFlex.lt-sm="40%" >
+        <mat-expansion-panel *ngFor="let driver of drivers"
+          (click)="onSelectDriver(driver.name)" hideToggle>
+          <mat-expansion-panel-header [ngClass.lt-sm]="'expansion-panel-small'"
+              [ngClass.lt-md]="'expansion-panel-medium'">
+            <mat-panel-title class="panel-title">
+              {{driver.name}}
+            </mat-panel-title>
+            <mat-panel-description [ngClass.lt-sm]="'expansion-panel-small'"
+               [ngClass.lt-md]="'expansion-panel-medium'">
+              {{driver.language.name}}
+              <!-- <mat-icon aria-hidden="false" aria-label="Male icon">{{driver.gender.id}}</mat-icon> -->
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p [ngClass.lt-sm]="'expansion-panel-small'"
+             [ngClass.lt-md]="'expansion-panel-medium'">
+            <mat-icon aria-hidden="false" aria-label="location icon" class="info-icon">place</mat-icon>
+              {{driver.cityOrigin}} <br>
+            <mat-icon aria-hidden="false" aria-label="phone icon" class="info-icon">phone</mat-icon>
+              {{driver.phone}} <br>
+            <mat-icon aria-hidden="false" aria-label="info icon" class="info-icon">info</mat-icon>
+              {{driver.info}} <br>
+          </p>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <app-map fxFlex [selectedCar]="selectedCar" [selectedDriver]="selectedDriver"></app-map>
+
+  </div>
+</div>
+
