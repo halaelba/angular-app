@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
-import { Car } from 'src/app/models/Car.model';
-import { Driver } from 'src/app/models/Driver.model';
+import ICarsApiResponse from 'src/app/models/apiResponse/CarsApiResponse.model';
+import Car from 'src/app/models/Car.model';
+import Driver from 'src/app/models/Driver.model';
 import { CarsService } from 'src/app/services/cars.service';
 
 @Component({
@@ -20,7 +21,7 @@ export class CarsComponent implements OnInit {
 
   constructor(private carsServie: CarsService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.subscription = this.loadCarsSub();
   }
 
@@ -36,14 +37,19 @@ export class CarsComponent implements OnInit {
 
   loadCars() {
     this.carsServie.LoadCarsData().subscribe(
-      (cars: any[]) => {
-        this.cars = cars.map((car: any) => new Car(car));
+      (cars: ICarsApiResponse[]) => {
+        this.cars = cars.map((car: ICarsApiResponse) => new Car(car));
         this.selectedCar && this.onSelectDriver(this.selectedCar.driver.name);
         if (!this.drivers.length) {
           this.drivers = this.cars.map(car => car.driver);
         }
       }
     );
+  }
+
+  private onChangeDriver(car: Car, driver: any) {
+    // Abstraction
+    car.changeDrive(driver.name, driver.phone);
   }
 
   onSelectDriver(driverName: string) {

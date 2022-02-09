@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Car } from 'src/app/models/Car.model';
-import { Driver } from 'src/app/models/Driver.model';
+import  Car  from 'src/app/models/Car.model';
+import  Driver  from 'src/app/models/Driver.model';
 
 @Component({
   selector: 'app-map',
